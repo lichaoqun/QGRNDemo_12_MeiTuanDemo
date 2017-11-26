@@ -9,7 +9,14 @@ import {
     View
 } from 'react-native';
 
+import {StackNavigator} from "react-navigation";
+
 export default class QGShop extends Component<{}> {
+
+    static navigationOptions = {
+        title: '商家',    //设置navigator的title
+    }
+
     render() {
         return (
             <View style={styles.container}>

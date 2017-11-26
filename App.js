@@ -12,24 +12,14 @@ import {
   View
 } from 'react-native';
 
-import QGMain from './Component/Main/QGMain';
+import QGLaunchImage from './Component/Main/QGLaunchImage'
 
 export default class App extends Component<{}> {
   render() {
     return (
-        <QGMain style = {styles.container}>
-
-        </QGMain>
+        //// - 一直显示启动图的操作
+        <QGLaunchImage/>
 
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});

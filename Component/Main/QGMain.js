@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
-import Navigator from 'react-native-deprecated-custom-components';
+import {StackNavigator} from "react-navigation";
 
 import QGHome from '../Home/QGHome';
 import QGMine from '../Mine/QGMine';
@@ -42,16 +42,7 @@ export default class QGMain extends Component<{}> {
                     }}
                     selectedTitleStyle = {{color : 'orange'}}
                 >
-                    <Navigator
-                        initialRoute = {{name : '首页', component : QGHome}}
-                        configureScene = {()=>{
-                            return Navigator.SceneConfigs.PushFromRight;
-                        }}
-                        renderScene = {(route, navigator)=>{
-                            let Component = route.component;
-                            return <Component {...route.passProps} navigator = {navigator} />
-                        }}
-                    />
+                    <HomeNAV/>
                 </TabNavigator.Item>
 
                 {/*商家*/}
@@ -65,7 +56,7 @@ export default class QGMain extends Component<{}> {
                         this.setState({ selectedTab: 'shop' })
                     }}
                 >
-                    <QGShop/>
+                    <ShopNAV/>
 
                 </TabNavigator.Item>
 
@@ -81,7 +72,7 @@ export default class QGMain extends Component<{}> {
                         this.setState({ selectedTab: 'mine' })
                     }}
                 >
-                    <QGMine/>
+                   <MineNAV/>
 
                 </TabNavigator.Item>
 
@@ -96,7 +87,7 @@ export default class QGMain extends Component<{}> {
                         this.setState({ selectedTab: 'more' })
                     }}
                 >
-                    <QGMore/>
+                   <MoreNAV/>
 
                 </TabNavigator.Item>
 
@@ -109,5 +100,41 @@ const styles = StyleSheet.create({
     iconStyle: {
         width : Platform.OS === 'ios' ? 30 : 25,
         height : Platform.OS === 'ios' ? 30 : 25
+    },
+});
+
+
+/*
+*   设置路由
+* */
+//首页
+const HomeNAV = StackNavigator({
+    Home: {
+        //对应界面MyHomeScreen
+        screen: QGHome,
+    },
+});
+
+//商家
+const ShopNAV = StackNavigator({
+    Home: {
+        //对应界面MyHomeScreen
+        screen: QGShop,
+    },
+});
+
+//我的
+const MineNAV = StackNavigator({
+    Home: {
+        //对应界面MyHomeScreen
+        screen: QGMine,
+    },
+});
+
+//更多
+const MoreNAV = StackNavigator({
+    Home: {
+        //对应界面MyHomeScreen
+        screen: QGMore,
     },
 });

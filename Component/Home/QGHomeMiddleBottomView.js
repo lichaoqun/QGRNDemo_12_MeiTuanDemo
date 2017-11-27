@@ -22,7 +22,7 @@ import QGMiddleItemView from './QGMiddleItemView'
 
 import HomeTopMiddleLeft from '../../LocalData/HomeTopMiddleLeft.json'
 
-export default class QGHomeMiddleView extends Component<{}> {
+export default class QGHomeMiddleBottomView extends Component<{}> {
     render(){
         return(
             <View style = {styles.contentBgStyle}>
@@ -34,7 +34,7 @@ export default class QGHomeMiddleView extends Component<{}> {
     }
     _renderTopView(){
         return (
-            <View style = {styles.leftBgStyle}>
+            <View style = {styles.topBgStyle}>
             </View>
         )
     }
@@ -42,7 +42,7 @@ export default class QGHomeMiddleView extends Component<{}> {
     _renderBottomView(){
 
         var itemViewArr = [];
-        var itemDataArr = HomeTopMiddleLeft.dataRight;
+        var itemDataArr = [...HomeTopMiddleLeft.dataRight,...HomeTopMiddleLeft.dataRight];
         itemDataArr.forEach((value, index)=>{
             itemViewArr.push(
                 <QGMiddleItemView
@@ -51,7 +51,7 @@ export default class QGHomeMiddleView extends Component<{}> {
             )
         })
         return(
-            <View style = {styles.rigthBgStyle}>
+            <View style = {styles.bottomBgStyle}>
                 {itemViewArr}
             </View>
         )
@@ -62,21 +62,23 @@ const styles = StyleSheet.create({
     contentBgStyle:{
         flexDirection : 'row',
         width : width,
-        height : 130,
         backgroundColor : 'white',
         alignItems : 'center',
-        marginTop : 10
+        marginTop : 10,
+        flexWrap : 'wrap'
     },
 
-    leftBgStyle:{
-        width:width / 2,
+    topBgStyle:{
+        width:width,
+        height : 40,
         alignItems : 'center',
     },
 
-    rigthBgStyle:{
+    bottomBgStyle:{
+        flexDirection : 'row',
         backgroundColor : 'white',
-        width:width / 2,
-        //alignItems : 'center',
-        justifyContent : 'center'
+        width:width,
+        flexWrap : 'wrap',
+        marginLeft : 10,
     }
 });

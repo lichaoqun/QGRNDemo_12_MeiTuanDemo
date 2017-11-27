@@ -1,4 +1,4 @@
-/**
+ /**
  * Created by QG on 2017/11/26.
  */
 import React, { Component } from 'react';

@@ -68,6 +68,10 @@ export default class QGHomeMiddleView extends Component<{}> {
             itemViewArr.push(
                 <QGMiddleItemView
                     itemData = {value}
+                    callBack = {
+                    (e)=>{
+                        console.log(e, this);
+                    }}
                 />
             )
         })

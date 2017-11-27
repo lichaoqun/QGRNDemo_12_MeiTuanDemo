@@ -9,14 +9,19 @@ import {
     View,
     TextInput,
     Image,
-    TouchableOpacity
-
+    TouchableOpacity,
+    ScrollView
 } from 'react-native';
 
 import {StackNavigator} from "react-navigation";
 
 import {width, height} from '../Main/QGCellStyle'
 import QGTopView from './QGTopView'
+import QGTopListView from './QGTopListView'
+import TopMenu from '../../LocalData/TopMenu.json'
+import TopMenu1 from '../../LocalData/TopMenu1.json'
+import QGHomeMiddleView from './QGHomeMiddleView'
+import QGHomeMiddleBottomView from './QGHomeMiddleBottomView'
 
 
 export default class QGHome extends Component<{}> {
@@ -30,7 +35,11 @@ export default class QGHome extends Component<{}> {
         return (
             <View style={styles.container}>
                 {this._renderNavBar()}
-                {this._renderTopView()}
+                <ScrollView>
+                    {this._renderTopView()}
+                    {this._renderMiddleTopView()}
+                    {this._renderMiddleBottmView()}
+                </ScrollView>
             </View>
         );
     }
@@ -89,13 +98,26 @@ export default class QGHome extends Component<{}> {
 
     _renderTopView(){
         return(
-
-            <QGTopView
-
+            //<QGTopView
+            //    dataArr = {TopMenu.data}
+            ///>
+            <QGTopListView
+                dataArr = {TopMenu1.data}
             />
         )
     }
 
+    _renderMiddleTopView(){
+        return (
+            <QGHomeMiddleView/>
+        )
+    }
+
+    _renderMiddleBottmView(){
+        return (
+            <QGHomeMiddleBottomView/>
+        )
+    }
 
 
 
@@ -117,7 +139,7 @@ export default class QGHome extends Component<{}> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#eeeeee',
     },
 
     NavStyle :{

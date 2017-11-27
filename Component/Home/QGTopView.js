@@ -21,6 +21,10 @@ import QGMineItemView from '../Mine/QGMineItemView'
 
 export default class QGTopView extends Component<{}> {
 
+    static defaultProps = {
+        dataArr : [[],[]],
+    }
+
     state = {
         currentPage : 0,
     }
@@ -38,7 +42,7 @@ export default class QGTopView extends Component<{}> {
                     {this._renderScrollView()}
                 </ScrollView>
 
-                <View style={{flexDirection : 'row', justifyContent : 'center', width : width, backgroundColor : 'red'}}>
+                <View style={{flexDirection : 'row', justifyContent : 'center', width : width,}}>
                     {this._renderPageView()}
                 </View>
             </View>
@@ -46,48 +50,33 @@ export default class QGTopView extends Component<{}> {
     }
 
     _renderScrollView(){
-        var itemArr = [];
+        var itemViewArr = [];
         var colorArr = ['orange', 'blue'];
-
         colorArr.forEach((value, index)=>{
-            itemArr.push(
-                <View style = {{backgroundColor : 'white', width : width, height : 120, flexDirection : 'row'}}>
-                    <QGMineItemView
-                        iconName = {'icon_homepage_foottreatCategory'}
-                        title = {'足疗按摩'}
-                        itemWidth ={ width / 5}
-                    />
 
-                    <QGMineItemView
-                        iconName = {'icon_homepage_foottreatCategory'}
-                        title = {'足疗按摩'}
-                        itemWidth ={ width / 5}
-                    />
-
-                    <QGMineItemView
-                        iconName = {'icon_homepage_foottreatCategory'}
-                        title = {'足疗按摩'}
-                        itemWidth ={ width / 5}
-                    />
-
-                    <QGMineItemView
-                        iconName = {'icon_homepage_foottreatCategory'}
-                        title = {'足疗按摩'}
-                        itemWidth ={ width / 5}
-                    />
-
-                    <QGMineItemView
-                        iconName = {'icon_homepage_foottreatCategory'}
-                        title = {'足疗按摩'}
-                        itemWidth ={ width / 5}
-                    />
-
+            var itemsArr = this.props.dataArr[index];
+            itemViewArr.push(
+                <View style = {{backgroundColor : 'white', width : width, flex : 1, flexDirection : 'row', flexWrap : 'wrap'}}>
+                    {this._renderItem(itemsArr)}
                 </View>
             );
         })
+        return itemViewArr;
+    }
 
-        return itemArr;
+    _renderItem(itemsArr){
 
+        var itemViewArr = [];
+        itemsArr.forEach((value, index)=>{
+            itemViewArr.push(
+                <QGMineItemView
+                    iconName = {value.image}
+                    title = {value.title}
+                    itemWidth ={ width / 5}
+                />
+            );
+        })
+        return itemViewArr;
     }
 
     _renderPageView(){
@@ -122,9 +111,8 @@ export default class QGTopView extends Component<{}> {
 const styles = StyleSheet.create({
 
     bgStyle : {
-        backgroundColor : 'green',
         width : width,
-        height : 120,
+        height : 150,
         flexDirection : 'column',
     },
 });

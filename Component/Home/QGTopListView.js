@@ -35,6 +35,7 @@ export default class QGTopListView extends Component<{}> {
     render() {
         return (
             <View style={styles.bgStyle}>
+                {this._renderChild()}
                 <ListView
                     contentContainerStyle = {styles.listViewStyle}
                     dataSource={ds.cloneWithRows(this.props.dataArr)}
@@ -47,6 +48,33 @@ export default class QGTopListView extends Component<{}> {
                 />
             </View>
         )
+    }
+
+    _renderChild(){
+        //// - 方案一
+        //console.log(this.props.children);
+        //var childViews = [];
+        //this._getChildrenMap().forEach((child, idx) => {
+        //    childViews.push(child);
+        //});
+        //return childViews;
+
+        // - 方案二
+        var childViews = [];
+        var childerViewMap = React.Children.map(this.props.children, (child) => {
+            console.log(child);
+            return child;
+
+        });
+        childerViewMap.forEach((value, idx) => {
+            childViews.push(value);
+        });
+        return childViews;
+    }
+
+
+    _getChildrenMap(children = this.props.children) {
+        return React.Children.map(children, (child) => child);
     }
 
     _renderRow(rowData) {
@@ -64,7 +92,7 @@ export default class QGTopListView extends Component<{}> {
 const styles = StyleSheet.create({
     bgStyle : {
         width : width,
-        height : 130,
+        height : 200,
         flexDirection : 'column',
     },
 

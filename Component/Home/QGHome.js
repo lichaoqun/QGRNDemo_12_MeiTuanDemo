@@ -103,7 +103,20 @@ export default class QGHome extends Component<{}> {
             ///>
             <QGTopListView
                 dataArr = {TopMenu1.data}
-            />
+            >
+                <Text>
+                    呵呵
+                </Text>
+                <View style = {{widht : 20, height : 20, backgroundColor : 'green'}}>
+
+                </View>
+                <Text>
+                    哈哈
+                </Text>
+                <Text>
+                    嘿嘿
+                </Text>
+            </QGTopListView>
         )
     }
 

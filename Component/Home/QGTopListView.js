@@ -30,11 +30,13 @@ export default class QGTopListView extends Component<{}> {
 
     static defaultProps = {
         dataArr: [],
+        subView1 : <Text>  控件里边的 text </Text>
     }
 
     render() {
         return (
             <View style={styles.bgStyle}>
+                {this.props.subView1}
                 {this._renderChild()}
                 <ListView
                     contentContainerStyle = {styles.listViewStyle}

@@ -102,6 +102,7 @@ export default class QGHome extends Component<{}> {
             //    dataArr = {TopMenu.data}
             ///>
             <QGTopListView
+                subView1 = {<Text>在外部定义了这个 text </Text>}
                 dataArr = {TopMenu1.data}
             >
                 <Text>

@@ -45,6 +45,8 @@ export default class QGHome extends Component<{}> {
     }
 
     _renderNavBar(){
+        this.QGTest = 'QGTest';
+
         return(
             <View style = {styles.NavStyle}>
                 <View style = {styles.topViewStyle}>
@@ -102,9 +104,12 @@ export default class QGHome extends Component<{}> {
             //    dataArr = {TopMenu.data}
             ///>
             <QGTopListView
+
+                {/* 在组件内部定义一个组件类型的属性 */}
                 subView1 = {<Text>在外部定义了这个 text </Text>}
                 dataArr = {TopMenu1.data}
             >
+                {/* 在自定义的组件内部嵌套使用组件 */}
                 <Text>
                     呵呵
                 </Text>
@@ -137,7 +142,7 @@ export default class QGHome extends Component<{}> {
 
     /* 点击事件监听 */
     _onSetLocalClick(){
-        console.log(`${this} + _onSetLocalClick`);
+        console.log(`${this} + _onSetLocalClick + ${this.QGTest}`);
     }
 
     _onMessageClick(){

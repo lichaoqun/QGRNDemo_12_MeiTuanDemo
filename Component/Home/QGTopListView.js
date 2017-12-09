@@ -61,17 +61,26 @@ export default class QGTopListView extends Component<{}> {
         //});
         //return childViews;
 
-        // - 方案二
-        var childViews = [];
-        var childerViewMap = React.Children.map(this.props.children, (child) => {
-            console.log(child);
-            return child;
+        //// - 方案二
+        //var childViews = [];
+        //var childerViewMap = React.Children.map(this.props.children, (child) => {
+        //    console.log(child);
+        //    return child;
+        //
+        //});
+        //childerViewMap.forEach((value, idx) => {
+        //    childViews.push(value);
+        //});
+        //return childViews;
 
-        });
-        childerViewMap.forEach((value, idx) => {
-            childViews.push(value);
-        });
-        return childViews;
+        // - 方案三
+
+        ...this.props
+        var childViews = [];
+         var childerViewMap = React.Children.map(this.props.children, (child) => { 
+             childViews.push(child);
+          });
+         return childViews; 
     }
 
 
